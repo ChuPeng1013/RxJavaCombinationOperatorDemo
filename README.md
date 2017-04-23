@@ -176,7 +176,6 @@ join(Observable, Func1, Func1, Func2)我们先介绍下join操作符的4个参�
 * Func1：接收从源Observable发射来的数据，并返回一个Observable，这个Observable的声明周期决定了源Observable发射出来的数据的有效期<br>
 * Func1：接收目标Observable发射来的数据，并返回一个Observable，这个Observable的声明周期决定了目标Observable发射出来的数据的有效期<br>
 * Func2：接收从源Observable和目标Observable发射出来的数据，并将这两个数据组合后返回<br>
-<br>
 所以Join操作符的语法结构大致是这样的：observableA.join(observableB, 控制observableA发射数据有效期的函数， 控制observableB发射数据有效期的函数，两个observable发射数据的合并规则)，它是将两个Observable产生的结果合并成一个新Observable对象。<br>
 join操作符的效果类似于排列组合，把第一个数据源A作为基座窗口，他根据自己的节奏不断发射数据元素，第二个数据源B，每发射一个数据，我们都把它和第一个数据源A中已经发射的数据进行一对一匹配；举例来说，如果某一时刻B发射了一个数据“B”，此时A已经发射了0，1，2，3共四个数据，那么我们的合并操作就会把“B”依次与0，1，2，3配对，得到四组数据： [0, B]、[1, B]、[2, B]、[3, B]。<br>
 根据官方给出的原理图：<br>
